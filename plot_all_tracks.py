@@ -20,6 +20,7 @@ import cartopy
 import os
 from PIL import Image
 
+#high-resolution shaded background fig for hurricane track plots
 Image.MAX_IMAGE_PIXELS = None
 map_location = "C:/Users/limgr/.spyder-py3/Map"
 os.environ["CARTOPY_USER_BACKGROUNDS"] = map_location
@@ -41,7 +42,7 @@ sizes = [3, 7, 7, 7, 7, 3, 4, 3, 3, 3, 3, 3, 6,5,4,3,2,2]
 
 
 
-
+# 2 sets of Hurricanes
 options = ["Katrina's Best Track",\
             "Maria's Best Track",\
             "Irma's Best Track",\
@@ -76,6 +77,7 @@ position = [[0,0,2],[0,2,4],[0,4,6],[1,0,2],[1,2,4]]
 position2 = [[0,4,0,7],[0,4,8,15],[0,4,16,23],[5,9,0,7],[5,9,8,15]]
 position = [[0,8,0,8],[9,17,0,8]]
 
+# Different options for line styles
 linestyles = OrderedDict(
     [('solid',               (0, ())),
      ('dashdotted',          (0, (3, 3, 1, 3))),
@@ -131,7 +133,7 @@ dir_p2 = ['C:/Users/limgr/Desktop/Cristobal_8km.p',\
        'C:/Users/limgr/Desktop/Nicole_8km.p']        
     
     
-    
+# this sets the figure borders in latitude and longitude    
 lat_log_bound = [[-90.5, -84.5, 23, 29],\
                  [-74, -68, 19.5, 25.5],\
                  [-47, -39, 14, 22],\

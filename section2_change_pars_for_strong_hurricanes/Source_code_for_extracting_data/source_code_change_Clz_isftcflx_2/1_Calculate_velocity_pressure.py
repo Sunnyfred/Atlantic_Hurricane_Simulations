@@ -84,7 +84,10 @@ for gk in range(len(gridsize)):
 
      	        ncfile = Dataset(ncfile)
      	        z = np.array(getvar (ncfile, 'z'))
-     	        WSPD = np.array(getvar (ncfile, 'wspd'))
+     	        #WSPD = np.array(getvar (ncfile, 'wspd'))
+     	        U10 = np.array(getvar (ncfile, 'U10'))
+     	        V10 = np.array(getvar (ncfile, 'V10'))
+     	        WSPD = np.sqrt(np.square(U10)+np.square(V10))
      	        slp2D = getvar(ncfile, "slp")
      	        PRESSURE = np.array(getvar (ncfile, 'pressure'))
 

@@ -1,0 +1,36 @@
+import json
+import sys
+import os
+import requests
+
+
+
+map_location = "C:/Users/limgr/.spyder-py3/Map"
+os.environ["CARTOPY_USER_BACKGROUNDS"] = map_location
+os.chdir(map_location)
+
+# response = requests.get("http://www.shadedrelief.com/world/Data/map1_type.jpg")
+# file = open("earthmap_0p1degress.jpeg", "wb")
+# file.write(response.content)
+# file.close()
+
+
+
+
+
+
+data = {}
+
+data["__comment__"] = "JSON file specifying the image to use for a given type/name and \
+ resolution. Read in by cartopy.mpl.geoaxes.read_user_background_images."
+
+data["SR"] = {
+    "__comment__": "earth map with shaded releif, 10m",
+    "__source__": "https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/raster/HYP_HR_SR.zip",
+    "__projection__": "PlateCarree",
+    "high": "HYP_HR_SR_W.tif"
+}
+
+
+with open('images.json', 'w') as outfile:
+    json.dump(data, outfile)

@@ -92,12 +92,13 @@ R = 6373.0 # approxiamte radius of earth in km
 
 # folder for wi and wt files
 
+data_frame=3
 
-dir_wp = ['C:/Users/limgr/Desktop/Katrina_wind_profiles_8km_5.csv',\
-       'C:/Users/limgr/Desktop/Maria_wind_profiles_8km_5.csv',\
-       'C:/Users/limgr/Desktop/Irma_wind_profiles_8km_5.csv',\
-       'C:/Users/limgr/Desktop/Dorian_wind_profiles_8km_5.csv',\
-       'C:/Users/limgr/Desktop/Lorenzo_wind_profiles_8km_5.csv']
+dir_wp = ['C:/Users/limgr/Desktop/Katrina_wind_profiles_8km_'+str(data_frame)+'.csv',\
+       'C:/Users/limgr/Desktop/Maria_wind_profiles_8km_'+str(data_frame)+'.csv',\
+       'C:/Users/limgr/Desktop/Irma_wind_profiles_8km_'+str(data_frame)+'.csv',\
+       'C:/Users/limgr/Desktop/Dorian_wind_profiles_8km_'+str(data_frame)+'.csv',\
+       'C:/Users/limgr/Desktop/Lorenzo_wind_profiles_8km_'+str(data_frame)+'.csv']
 
    
     

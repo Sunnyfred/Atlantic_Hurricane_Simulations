@@ -45,39 +45,34 @@ outputpath = '/project/momen/meng/COAWST/results/WRF_VS_WRFSWAN_2/postprocessing
 
 
 
-# prefix for WRF files
-wrf_pre='wrfout_d01_'
-# years and months for Hurricanes (must be in the same order as in days and Hurricaneall)
-years_month = ['2019-09-','2017-09-','2017-09-','2005-08-','2019-09-']
-# days selected to evaluated the averged wind speed, may select some time in the middle
-avg_day = ['01', '23', '03', '29', '28']
-wrf_af = '_18:00:00'
-
-
-
-# mainpath = 'C:/Users/limgr/Desktop/'
-# Hurricaneall = ['Katrina']
-
-# days = [28]  # start day
-# hours = [-6] # start hour
-# output_interval=6
-# gridsize = ['8km']
-# swansize = ['swgr8p0']
-# prefix = 'WRFSWAN_NoTurb_swdt10_cpdt7200_'
-# Dirall = ['_swh8_swt14_Clz0p0001']
-# outputpath = 'C:/Users/limgr/Desktop/'
-
-
 
 # prefix for WRF files
 wrf_pre='wrfout_d01_'
 # years and months for Hurricanes (must be in the same order as in days and Hurricaneall)
-years_month = ['2019-08-','2017-09-','2017-09-','2005-08-','2019-09-']
+years_month_day = [['2019-08-31','2019-08-31','2019-08-31','2019-08-31',\
+                    '2019-09-01','2019-09-01','2019-09-01','2019-09-01','2019-09-02'],\
+               ['2017-09-22','2017-09-22','2017-09-22','2017-09-22',\
+                '2017-09-23','2017-09-23','2017-09-23','2017-09-23','2017-09-24'],\
+               ['2017-09-02','2017-09-02','2017-09-02','2017-09-02',\
+                '2017-09-03','2017-09-03','2017-09-03','2017-09-03','2017-09-04'],\
+               ['2005-08-28','2005-08-28','2005-08-28','2005-08-28',\
+                '2005-08-28','2005-08-28','2005-08-28','2005-08-28','2005-08-28'],\
+               ['2019-09-27','2019-09-27','2019-09-27','2019-09-27',\
+                '2019-09-28','2019-09-28','2019-09-28','2019-09-28','2019-09-29']]
 #years_month = ['2005-08-']
-# days selected to evaluated the averged wind speed, may select some time in the middle
-avg_day = ['31', '22', '02', '28', '27']
+
+
 #avg_day = ['29']
-wrf_af = '_18:00:00'
+wrf_af = [['_00:00:00','_06:00:00','_12:00:00','_18:00:00',\
+          '_00:00:00','_06:00:00','_12:00:00','_18:00:00', '_00:00:00'],\
+          ['_00:00:00','_06:00:00','_12:00:00','_18:00:00',\
+          '_00:00:00','_06:00:00','_12:00:00','_18:00:00', '_00:00:00'],\
+          ['_00:00:00','_06:00:00','_12:00:00','_18:00:00',\
+          '_00:00:00','_06:00:00','_12:00:00','_18:00:00', '_00:00:00'],\
+          ['_00:00:00','_06:00:00','_12:00:00','_18:00:00',\
+          '_00:00:00','_06:00:00','_12:00:00','_18:00:00', '_00:00:00'],\
+          ['_00:00:00','_06:00:00','_12:00:00','_18:00:00',\
+          '_00:00:00','_06:00:00','_12:00:00','_18:00:00', '_00:00:00']]
 
 R = 6373.0 # approxiamte radius of earth in km
 max_press = 1010 # max_radius in hPa 
@@ -85,28 +80,38 @@ min_press = 900 # max_radius in hPa
 dr_step = 4 # dr_step in km
 interpolat_height = [10] # interpolat_height in m
 
-# # This function returns a list of all wrf files in the directory.
-# def list_files(Dir, ncfiles, i):
-#  	for f in os.listdir(Dir):
-#          if f.startswith(wrf_pre+years_month[i]+avg_day[i]+wrf_af):
-#              ncfiles.append(f)
-#  	print(ncfiles)
-#  	return (ncfiles)
 
+
+min_press_factor=1.000
+max_press_factor=1.005
 min_press_factor=0.99
 max_press_factor=1.01
 
 
+my_cols = len(Hurricaneall)
+ncfiles=[]
+for k in range(len(Hurricaneall)):
+    tmp=[]
+    for i in range(len(years_month_day[0])):
+        tmp.append(wrf_pre+years_month_day[k][i]+wrf_af[k][i])
+    ncfiles.append(tmp)
+print(ncfiles)
 
-for height in interpolat_height:
+count_file = 0
+for ida in range(len(years_month_day[0])): 
     
+
 
     for gk in range(len(gridsize)):
         count1=0
 
         for Hurricane in Hurricaneall:
+      
+ 
 
 
+            count2=0
+            
             results1=[]  
             results2=[]  
             for Dir in Dirall:
@@ -127,20 +132,15 @@ for height in interpolat_height:
                 print(Dir_local)
                 #row.append(Hurricane+Dir)
              
+             
             
                 day=days[count1]
                 hour=hours[count1]
                 day_count=0
                 # Set the working space>
                 os.chdir(Dir_local)
-                # # initiate the list that will contain all wrf files in Dir directory.
-                ncfiles = []
-                # # Use the list_files function to list all the wrf files in the directory.
-                # ncfiles = list_files(Dir_local, ncfiles, count1)
-                # Sort the ncfiles 
-                ncfiles = [wrf_pre+years_month[count1]+avg_day[count1]+wrf_af]
-                # ncfiles = ['wrfout_d01_2005-08-29_00%3A00%3A00']
-                print (ncfiles)
+                ncfile = ncfiles[count1][ida]
+                print(ncfile)
                 # initiate the list that will contain the hurricane-track data
                 eye_slp = []
                 eye_lat = []
@@ -148,9 +148,11 @@ for height in interpolat_height:
                 max_wind_pres = []
                 max_wind_lat = []
                 max_wind_long = []
-                print(ncfiles)
 
-                for ncfile in ncfiles:  
+
+                
+                
+                for height in interpolat_height:   
                 
     
          	        #print (ncfile)
@@ -183,19 +185,36 @@ for height in interpolat_height:
          	        # print(eye_lat)
                      
                      
-                     
+                        # SLP_MX is determined by surface wind speed
          	        U10 = np.array(getvar (ncfile, 'U10'))                     
          	        V10 = np.array(getvar (ncfile, 'V10'))   
          	        wspd_2D = np.sqrt(np.square(U10)+np.square(V10))
          	        max_wind_idx = np.where(wspd_2D == np.amax(wspd_2D))
+         	        # # print(max_wind_idx,max_wind_idx[0],max_wind_idx[1])
+         	        # max_wind_pres.append(slp[max_wind_idx[0],max_wind_idx[1]]) 
+         	        # print('max wind pressure is: '+ str(max_wind_pres[0]))
+                     
+
+         	        WSPD = np.array(getvar (ncfile, 'wspd'))  
+                        # SLP_MX is determined by wind speed at 500m
+         	        #wspd_2D = interplevel(WSPD, Z_3D, 500)
+                        # SLP_MX is determined by wind speed at first level
+         	        #wspd_2D = WSPD[0,:,:]  
+         	        #max_wind_idx = np.where(wspd_2D == np.amax(wspd_2D))
          	        # print(max_wind_idx,max_wind_idx[0],max_wind_idx[1])
          	        max_wind_pres.append(slp[max_wind_idx[0],max_wind_idx[1]]) 
          	        print('max wind pressure is: '+ str(max_wind_pres[0]))
+         	        print('max wind pressure is: '+ str(min_press_factor * max_wind_pres[0]))
+         	        print('max wind pressure is: '+ str(max_press_factor * max_wind_pres[0]))                     
+                    
                     
          	        counter = 0.0
-         	        UR_avg = [i for i in range(len(levels))]
-         	        UTH_avg = [i for i in range(len(levels))]
-         	        zz = [i for i in range(len(levels))]
+         	        UR_avg = [i*0 for i in range(len(levels))]
+         	        UTH_avg = [i*0 for i in range(len(levels))]
+         	        zz = [i*0 for i in range(len(levels))]
+         	        print('inital UR_avg: ', UR_avg)   
+         	        print('inital UTH_avg: ', UTH_avg) 
+         	        print('inital zz: ', zz) 
                      
          	        for lat_i in latitudes:
 
@@ -269,8 +288,7 @@ for height in interpolat_height:
                          UTH_avg[ccc] = UTH_avg[ccc]/counter                            
                          zz[ccc] = Z_3D[ccc, 0, 0]
                          ccc +=1
-                    
-                                                           
+                                                         
          
                 print('counter = '+str(counter))
                 results1.append(UR_avg) 
@@ -282,7 +300,7 @@ for height in interpolat_height:
                 print(results1)                                
                 print(results2)
 
-            with open(outputpath+Hurricane+'_wind_profiles_'+gridsize[gk]+'.csv', 'w') as csvfile:
+            with open(outputpath+Hurricane+'_wind_profiles_'+gridsize[gk]+'_'+str(count_file)+'.csv', 'w') as csvfile:
                     csvwriter = csv.writer(csvfile)
                     csvwriter.writerow(zz)
                     for i in range(len(results1)):
@@ -295,3 +313,5 @@ for height in interpolat_height:
         
         
             count1=count1+1   
+            
+    count_file += 1

@@ -201,10 +201,10 @@ for kk in range(len(hurricanes)):
     
 
     if kk==0 or kk==3:
-        plt.ylabel(r'Intensity (m/s)', **csfont, fontsize=35)
+        plt.ylabel(r'$Z_0$ (m)', **csfont, fontsize=35)
     if kk==2 :
         plt.xlabel(r"Time Series (hr)", fontsize=30, **csfont)
-    plt.title(hurricanes[kk]+'(A)', {'size': 30}, **csfont)
+    plt.title(hurricanes[kk]+' (A)', {'size': 30}, **csfont)
 
 
 
@@ -291,10 +291,10 @@ for kk in range(len(hurricanes)):
     
 
     if kk==0 or kk==3:
-        plt.ylabel(r'Intensity (m/s)', **csfont, fontsize=35)
+        plt.ylabel(r'$Z_0$ (m)', **csfont, fontsize=35)
     if kk==2 or kk==3 or kk==4:
         plt.xlabel(r"Time Series (hr)", fontsize=30, **csfont)
-    plt.title(hurricanes[kk]+'(B)', {'size': 30}, **csfont)
+    plt.title(hurricanes[kk]+' (B)', {'size': 30}, **csfont)
 
 
 

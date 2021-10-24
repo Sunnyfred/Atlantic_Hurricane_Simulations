@@ -43,22 +43,22 @@ sizes = [7, 7, 7, 7, 7, 3, 4, 3, 3, 3, 3, 3, 6,5,4,3,2,2]
 
 
 options1 = ["Best Track",\
-            r"$Clz_{COAWST}=0.0001$",\
-            r"$Clz_{COAWST}=0.01$",\
-            r"$Clz_{COAWST}=1$",\
-            r"$Clz_{COAWST}=100$"]
+            r"Clz$_\mathdefault{COAWST}$=0.0001",\
+            r"Clz$_\mathdefault{COAWST}$=0.01",\
+            r"Clz$_\mathdefault{COAWST}$=1",\
+            r"Clz$_\mathdefault{COAWST}$=100"]
 
 options2 = ["Best Track",\
-            r"$Clz_{YSU-1}=0.0001$",\
-            r"$Clz_{YSU-1}=0.01$",\
-            r"$Clz_{YSU-1}=1$",\
-            r"$Clz_{YSU-1}=100$"]
+            r"Clz$_\mathdefault{YSU-1}$=0.0001",\
+            r"Clz$_\mathdefault{YSU-1}$=0.01",\
+            r"Clz$_\mathdefault{YSU-1}$=1",\
+            r"Clz$_\mathdefault{YSU-1}$=100"]
     
 options3 = ["Best Track",\
-            r"$Clz_{YSU-2}=0.0001$",\
-            r"$Clz_{YSU-2}=0.01$",\
-            r"$Clz_{YSU-2}=1$",\
-            r"$Clz_{YSU-2}=100$"]
+            r"Clz$_\mathdefault{YSU-2}$=0.0001",\
+            r"Clz$_\mathdefault{YSU-2}$=0.01",\
+            r"Clz$_\mathdefault{YSU-2}$=1",\
+            r"Clz$_\mathdefault{YSU-2}$=100"]
 
 
 
@@ -214,7 +214,7 @@ for kk in range(len(hurricanes)):
         plt.ylabel(r'Intensity (m/s)', **csfont, fontsize=35)
     if kk==2:
         plt.xlabel(r"Time Series (hr)", fontsize=30, **csfont)
-    plt.title(hurricanes[kk]+r'(COAWST)', {'size': 30}, **csfont)
+    plt.title(hurricanes[kk]+r' (COAWST)', {'size': 30}, **csfont)
     
     
     
@@ -300,7 +300,7 @@ for kk in range(len(hurricanes)):
         plt.ylabel(r'Intensity (m/s)', **csfont, fontsize=35)
     if kk==2:
         plt.xlabel(r"Time Series (hr)", fontsize=30, **csfont)
-    plt.title(hurricanes[kk]+r'(YSU-1)', {'size': 30}, **csfont)
+    plt.title(hurricanes[kk]+r' (YSU-1)', {'size': 30}, **csfont)
     
     
     
@@ -385,7 +385,7 @@ for kk in range(len(hurricanes)):
         plt.ylabel(r'Intensity (m/s)', **csfont, fontsize=35)
     if kk==2 or kk==3 or kk==4:
         plt.xlabel(r"Time Series (hr)", fontsize=30, **csfont)
-    plt.title(hurricanes[kk]+r'(YSU-2)', {'size': 30}, **csfont)
+    plt.title(hurricanes[kk]+r' (YSU-2)', {'size': 30}, **csfont)
 
     
     

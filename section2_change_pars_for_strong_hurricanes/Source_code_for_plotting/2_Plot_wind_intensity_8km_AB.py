@@ -204,7 +204,7 @@ for kk in range(len(hurricanes)):
         plt.ylabel(r'Intensity (m/s)', **csfont, fontsize=35)
     if kk==2 :
         plt.xlabel(r"Time Series (hr)", fontsize=30, **csfont)
-    plt.title(hurricanes[kk]+'(A)', {'size': 30}, **csfont)
+    plt.title(hurricanes[kk]+' (A)', {'size': 30}, **csfont)
 
     
 
@@ -289,7 +289,7 @@ for kk in range(len(hurricanes)):
         plt.ylabel(r'Intensity (m/s)', **csfont, fontsize=35)
     if kk==2 or kk==3 or kk==4:
         plt.xlabel(r"Time Series (hr)", fontsize=30, **csfont)
-    plt.title(hurricanes[kk]+'(B)', {'size': 30}, **csfont)
+    plt.title(hurricanes[kk]+' (B)', {'size': 30}, **csfont)
 
     
 plt.savefig('C:/Users/limgr/Desktop/wind_intensity_AB.png', dpi=500)

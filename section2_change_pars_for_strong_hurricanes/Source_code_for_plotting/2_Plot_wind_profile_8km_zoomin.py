@@ -93,11 +93,11 @@ R = 6373.0 # approxiamte radius of earth in km
 # folder for wi and wt files
 
 
-dir_wp = ['C:/Users/limgr/Desktop/Katrina_wind_profiles_8km_5.csv',\
-       'C:/Users/limgr/Desktop/Maria_wind_profiles_8km_5.csv',\
-       'C:/Users/limgr/Desktop/Irma_wind_profiles_8km_5.csv',\
-       'C:/Users/limgr/Desktop/Dorian_wind_profiles_8km_5.csv',\
-       'C:/Users/limgr/Desktop/Lorenzo_wind_profiles_8km_5.csv']
+dir_wp = ['C:/Users/limgr/Desktop/Katrina_wind_profiles_8km_1.csv',\
+       'C:/Users/limgr/Desktop/Maria_wind_profiles_8km_1.csv',\
+       'C:/Users/limgr/Desktop/Irma_wind_profiles_8km_1.csv',\
+       'C:/Users/limgr/Desktop/Dorian_wind_profiles_8km_1.csv',\
+       'C:/Users/limgr/Desktop/Lorenzo_wind_profiles_8km_1.csv']
 
    
     
@@ -178,10 +178,8 @@ for kk in range(len(hurricanes)):
             plt.yticks(fontsize=25, **csfont)
             if kk == 2:
                 plt.ylim([1.5, 2.5])
-                plt.ylim([1.5, 5.5])
             else:
                 plt.ylim([0, 1])
-                plt.ylim([0, 5])
         else:
             plt.plot( tmp, Times0, color = colors[c], \
                       linestyle=list(linestyles.values())[0],\
@@ -192,10 +190,8 @@ for kk in range(len(hurricanes)):
             
             if kk == 2:
                 plt.ylim([1.5, 2.5])
-                plt.ylim([1.5, 5.5])
             else:
                 plt.ylim([0, 1])
-                plt.ylim([0, 5])
 
         c+=1
         
@@ -217,7 +213,7 @@ for kk in range(len(hurricanes)):
 
 ax = fig.add_subplot(spec[position2[5][0]:position2[5][1],\
                               position2[5][2]:position2[5][3]])    
-ax.text(0.05, 0.9, r'$1.000 \leq \frac{slp}{slp_{max-wi}} \leq 1.005$', \
+ax.text(0.05, 0.9, r'$0.99 \leq \frac{slp}{slp_{max-wi}} \leq 1.01$', \
         transform=ax.transAxes, size=30, **csfont)    
 ax.axes.xaxis.set_visible(False)
 ax.axes.yaxis.set_visible(False)

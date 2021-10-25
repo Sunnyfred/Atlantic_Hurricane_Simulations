@@ -43,30 +43,30 @@ sizes = [7, 7, 7, 7, 7, 3, 4, 3, 3, 3, 3, 3, 6,5,4,3,2,2]
 
 
 options1 = ["Best Track",\
-            r"$Clz_{COAWST}=0.0001$",\
-            r"$Clz_{COAWST}=0.01$",\
-            r"$Clz_{COAWST}=1$",\
-            r"$Clz_{COAWST}=100$"]
+            r"Clz$_\mathdefault{COAWST}$=0.0001",\
+            r"Clz$_\mathdefault{COAWST}$=0.01",\
+            r"Clz$_\mathdefault{COAWST}$=1",\
+            r"Clz$_\mathdefault{COAWST}$=100"]
 
 options2 = ["Best Track",\
-            r"$Clz_{YSU-1}=0.0001$",\
-            r"$Clz_{YSU-1}=0.01$",\
-            r"$Clz_{YSU-1}=1$",\
-            r"$Clz_{YSU-1}=100$"]
+            r"Clz$_\mathdefault{YSU-1}$=0.0001",\
+            r"Clz$_\mathdefault{YSU-1}$=0.01",\
+            r"Clz$_\mathdefault{YSU-1}$=1",\
+            r"Clz$_\mathdefault{YSU-1}$=100"]
     
 options3 = ["Best Track",\
-            r"$Clz_{YSU-2}=0.0001$",\
-            r"$Clz_{YSU-2}=0.01$",\
-            r"$Clz_{YSU-2}=1$",\
-            r"$Clz_{YSU-2}=100$"]
+            r"Clz$_\mathdefault{YSU-2}$=0.0001",\
+            r"Clz$_\mathdefault{YSU-2}$=0.01",\
+            r"Clz$_\mathdefault{YSU-2}$=1",\
+            r"Clz$_\mathdefault{YSU-2}$=100"] 
 
 
      
-hurricanes = ["Katrina",\
-            "Maria",\
-            "Irma",\
-            "Dorian",\
-            "Lorenzo"]
+hurricanes = ["Cristobal",\
+            "Gert",\
+            "Ike",\
+            "Joaquin",\
+            "Nicole"]
     
 # subplot positions 
 position = [[0,0,2],[0,2,4],[0,4,6],[1,0,2],[1,2,4],
@@ -105,43 +105,43 @@ R = 6373.0 # approxiamte radius of earth in km
 
 
     
-dir_wt1 = ['C:/Users/limgr/Desktop/1/Katrina_track_8km.txt',\
-       'C:/Users/limgr/Desktop/1/Maria_track_8km.txt',\
-       'C:/Users/limgr/Desktop/1/Irma_track_8km.txt',\
-       'C:/Users/limgr/Desktop/1/Dorian_track_8km.txt',\
-       'C:/Users/limgr/Desktop/1/Lorenzo_track_8km.txt']    
+dir_wt1 = ['C:/Users/limgr/Desktop/1/Cristobal_track_8km.txt',\
+       'C:/Users/limgr/Desktop/1/Gert_track_8km.txt',\
+       'C:/Users/limgr/Desktop/1/Ike_track_8km.txt',\
+       'C:/Users/limgr/Desktop/1/Joaquin_track_8km.txt',\
+       'C:/Users/limgr/Desktop/1/Nicole_track_8km.txt']    
 
-dir_p1 = ['C:/Users/limgr/Desktop/1/Katrina_8km.p',\
-       'C:/Users/limgr/Desktop/1/Maria_8km.p',\
-       'C:/Users/limgr/Desktop/1/Irma_8km.p',\
-       'C:/Users/limgr/Desktop/1/Dorian_8km.p',\
-       'C:/Users/limgr/Desktop/1/Lorenzo_8km.p']    
+dir_p1 = ['C:/Users/limgr/Desktop/1/Cristobal_8km.p',\
+       'C:/Users/limgr/Desktop/1/Gert_8km.p',\
+       'C:/Users/limgr/Desktop/1/Ike_8km.p',\
+       'C:/Users/limgr/Desktop/1/Joaquin_8km.p',\
+       'C:/Users/limgr/Desktop/1/Nicole_8km.p']    
 
     
-dir_wt2 = ['C:/Users/limgr/Desktop/2/Katrina_track_8km.txt',\
-       'C:/Users/limgr/Desktop/2/Maria_track_8km.txt',\
-       'C:/Users/limgr/Desktop/2/Irma_track_8km.txt',\
-       'C:/Users/limgr/Desktop/2/Dorian_track_8km.txt',\
-       'C:/Users/limgr/Desktop/2/Lorenzo_track_8km.txt']    
+dir_wt2 = ['C:/Users/limgr/Desktop/2/Cristobal_track_8km.txt',\
+       'C:/Users/limgr/Desktop/2/Gert_track_8km.txt',\
+       'C:/Users/limgr/Desktop/2/Ike_track_8km.txt',\
+       'C:/Users/limgr/Desktop/2/Joaquin_track_8km.txt',\
+       'C:/Users/limgr/Desktop/2/Nicole_track_8km.txt']    
 
-dir_p2 = ['C:/Users/limgr/Desktop/2/Katrina_8km.p',\
-       'C:/Users/limgr/Desktop/2/Maria_8km.p',\
-       'C:/Users/limgr/Desktop/2/Irma_8km.p',\
-       'C:/Users/limgr/Desktop/2/Dorian_8km.p',\
-       'C:/Users/limgr/Desktop/2/Lorenzo_8km.p']       
+dir_p2 = ['C:/Users/limgr/Desktop/2/Cristobal_8km.p',\
+       'C:/Users/limgr/Desktop/2/Gert_8km.p',\
+       'C:/Users/limgr/Desktop/2/Ike_8km.p',\
+       'C:/Users/limgr/Desktop/2/Joaquin_8km.p',\
+       'C:/Users/limgr/Desktop/2/Nicole_8km.p']       
     
     
-dir_wt3 = ['C:/Users/limgr/Desktop/3/Katrina_track_8km.txt',\
-       'C:/Users/limgr/Desktop/3/Maria_track_8km.txt',\
-       'C:/Users/limgr/Desktop/3/Irma_track_8km.txt',\
-       'C:/Users/limgr/Desktop/3/Dorian_track_8km.txt',\
-       'C:/Users/limgr/Desktop/3/Lorenzo_track_8km.txt']    
+dir_wt3 = ['C:/Users/limgr/Desktop/3/Cristobal_track_8km.txt',\
+       'C:/Users/limgr/Desktop/3/Gert_track_8km.txt',\
+       'C:/Users/limgr/Desktop/3/Ike_track_8km.txt',\
+       'C:/Users/limgr/Desktop/3/Joaquin_track_8km.txt',\
+       'C:/Users/limgr/Desktop/3/Nicole_track_8km.txt']    
 
-dir_p3 = ['C:/Users/limgr/Desktop/3/Katrina_8km.p',\
-       'C:/Users/limgr/Desktop/3/Maria_8km.p',\
-       'C:/Users/limgr/Desktop/3/Irma_8km.p',\
-       'C:/Users/limgr/Desktop/3/Dorian_8km.p',\
-       'C:/Users/limgr/Desktop/3/Lorenzo_8km.p']       
+dir_p3 = ['C:/Users/limgr/Desktop/3/Cristobal_8km.p',\
+       'C:/Users/limgr/Desktop/3/Gert_8km.p',\
+       'C:/Users/limgr/Desktop/3/Ike_8km.p',\
+       'C:/Users/limgr/Desktop/3/Joaquin_8km.p',\
+       'C:/Users/limgr/Desktop/3/Nicole_8km.p']       
     
     
 
@@ -163,6 +163,14 @@ lat_log_bound = [[-91, -85, 24, 30],\
                  [-51, -39, 14, 22],\
                  [-78, -70, 23, 29],\
                  [-47, -40, 16.5, 25.5]]       
+    
+lat_log_bound = [[-78, -65, 23, 36],\
+                  [-76, -57, 26, 44],\
+                  [-92, -82, 20, 30],\
+                  [-74, -59, 24, 39],\
+                  [-65, -46, 32, 42]]  
+    
+    
     
 
 def Calculate_Distance_Haversine1(x):
@@ -307,14 +315,14 @@ for kk in range(len(hurricanes)):
         ll=[]
         rr=[]
         
-    if hurricanes[kk]=='Lorenzo':   
+    if hurricanes[kk]=='Nicole':   
         for axis in ['top','bottom','left','right']:
             ax.spines[axis].set_linewidth(15)
-        ax.legend(options1, bbox_to_anchor=(1.3, 0.95), prop=font_wt, \
+        ax.legend(options1, bbox_to_anchor=(1., 1.), prop=font_wt, \
                 frameon=False)
 
         
-    plt.title(hurricanes[kk]+r'(COAWST)', {'size': 25}, **csfont)
+    plt.title(hurricanes[kk]+r' (COAWST)', {'size': 25}, **csfont)
     # plt.legend(['Real track','C0.0001', 'C0.01', 'C1', 'C100'],\
     #        loc = "upper right", prop={'size': 7})
     # plt.xlabel("Lon", fontsize=135)
@@ -443,14 +451,14 @@ for kk in range(len(hurricanes)):
         rr=[]
         
         
-    if hurricanes[kk]=='Lorenzo':   
+    if hurricanes[kk]=='Nicole':   
         for axis in ['top','bottom','left','right']:
             ax.spines[axis].set_linewidth(15)
-        ax.legend(options2, bbox_to_anchor=(1.3, 0.95), prop=font_wt, \
+        ax.legend(options2, bbox_to_anchor=(1., 1.), prop=font_wt, \
                 frameon=False)
 
         
-    plt.title(hurricanes[kk]+r'(YSU-1)', {'size': 25}, **csfont)
+    plt.title(hurricanes[kk]+r' (YSU-1)', {'size': 25}, **csfont)
     # plt.legend(['Real track','C0.0001', 'C0.01', 'C1', 'C100'],\
     #        loc = "upper right", prop={'size': 7})
     # plt.xlabel("Lon", fontsize=135)
@@ -575,14 +583,14 @@ for kk in range(len(hurricanes)):
         rr=[]
         
         
-    if hurricanes[kk]=='Lorenzo':   
+    if hurricanes[kk]=='Nicole':   
         for axis in ['top','bottom','left','right']:
             ax.spines[axis].set_linewidth(15)
-        ax.legend(options3, bbox_to_anchor=(1.3, 0.95), prop=font_wt, \
+        ax.legend(options3, bbox_to_anchor=(1., 1.), prop=font_wt, \
                 frameon=False)
 
         
-    plt.title(hurricanes[kk]+r'(YSU-2)', {'size': 25}, **csfont)
+    plt.title(hurricanes[kk]+r' (YSU-2)', {'size': 25}, **csfont)
     # plt.legend(['Real track','C0.0001', 'C0.01', 'C1', 'C100'],\
     #        loc = "upper right", prop={'size': 7})
     # plt.xlabel("Lon", fontsize=135)

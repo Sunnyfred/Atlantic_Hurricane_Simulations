@@ -31,7 +31,7 @@ Real_Hurricane_Data = ['Gert_Real_Track_Time_NOAA.csv',
                         'Cristobal_Real_Track_Time_NOAA.csv',
                         'Ike_Real_Track_Time_NOAA.csv']
 days = [15, 14, 4, 26, 10]  # start day
-hours = [-6, -6, -6, -6, -6] # start hour
+hours = [-6, -6, 12, -6, -6] # start hour
 output_interval=6
 gridsize = ['8km','16km']
 swansize = ['swgr8p0', 'swgr16p0']
@@ -75,6 +75,7 @@ for gk in range(len(gridsize)):
      	    row_header = next(reader)
      	    # Extract the data necessary to plot the real truck.
      	    for row in reader:
+     	 	    print(row)
      	 	    Real_Lat.append(float(row[row_header.index('Lat')]))
      	 	    Real_Long.append(float(row[row_header.index('Lon')]))
      	 	    Real_hour.append(int(row[row_header.index('Time - hour')]))	

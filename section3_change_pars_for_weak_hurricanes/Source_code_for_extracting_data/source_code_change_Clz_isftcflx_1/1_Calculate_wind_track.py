@@ -31,7 +31,7 @@ Real_Hurricane_Data = ['Gert_Real_Track_Time_NOAA.csv',
                         'Cristobal_Real_Track_Time_NOAA.csv',
                         'Ike_Real_Track_Time_NOAA.csv']
 days = [15, 14, 4, 26, 10]  # start day
-hours = [-6, -6, -6, -6, -6] # start hour
+hours = [-6, -6, 12, -6, -6] # start hour
 output_interval=6
 # Hurricaneall = ['Dorian']
 # Real_Hurricane_Data = ['Dorian_Real_Track_Time_NOAA.csv']

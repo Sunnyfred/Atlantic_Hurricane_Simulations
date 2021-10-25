@@ -19,6 +19,10 @@ from wrf import (to_np, getvar, smooth2d, get_cartopy, cartopy_xlim,
 import cartopy
 import os
 from PIL import Image
+from shapely.geometry.polygon import Polygon
+from shapely import geometry
+from collections import namedtuple
+from shapely.geometry.polygon import LinearRing
 
 Image.MAX_IMAGE_PIXELS = None
 map_location = "C:/Users/limgr/.spyder-py3/Map"
@@ -37,7 +41,7 @@ colors = ['k','blue','cyan','purple', 'red', \
 patterns = ['-', '--','-.','-',':',':','--','--', ':','-', '--', ':','-', '--', ':',\
             '-.', '-.', '-.', ':', '--', '-']
 markers = ['s','D','^','o','*','s','+','x','X','D','^','<','>','v'] 
-sizes = [3, 7, 7, 7, 7, 3, 4, 3, 3, 3, 3, 3, 6,5,4,3,2,2]
+sizes = [5, 7, 7, 7, 7, 3, 4, 3, 3, 3, 3, 3, 6,5,4,3,2,2]
 
 
 
@@ -163,11 +167,86 @@ lat_log_bound2 = [[-95, -35, 21, 40],\
                  [-78, -70, 23, 29],\
                  [-47, -40, 16.5, 25.5]]  
     
-# lat_log_bound = [[-92, -86, 25, 30],\
-#                  [-74, -68, 21.5, 25.5],\
-#                  [-46, -43.5, 17, 19.5],\
-#                  [-76, -73.5, 25.5, 28],\
-#                  [-46, -42, 19, 23]]
+    
+
+strong_month_day = [['08/31','08/31','08/31','08/31',\
+                    '09/01','09/01','09/01','09/01','09/02'],\
+               ['09/22','09/22','09/22','09/22',\
+                '09/23','09/23','09/23','09/23','09/24'],\
+               ['09/02','09/02','09/02','09/02',\
+                '09/03','09/03','09/03','09/03','09/04'],\
+               ['08/28','08/28','08/28','08/28',\
+                '08/29','08/29','08/29','08/29','08/30'],\
+               ['09/27','09/27','09/27','09/27',\
+                '09/28','09/28','09/28','09/28','09/29']]
+    
+    
+    
+    
+    
+# define box regions    
+Region = namedtuple('Region',field_names=['region_name','lonmin','lonmax','latmin','latmax'])
+
+
+# Ka_region = Region(region_name="all_region",
+#     lonmin = -109,    lonmax = -69,    latmin = 12.5,    latmax = 37.5,
+# )
+
+# Ma_region = Region(region_name="all_region",
+#     lonmin = -93,    lonmax = -53,    latmin = 12.5,    latmax = 37.5,
+# )
+
+# Ir_region = Region(
+#     region_name="all_region",
+#     lonmin = -67,    lonmax = -27,    latmin = 4.5,    latmax = 29.5,
+# )
+
+# Do_region = Region(
+#     region_name="all_region",
+#     lonmin = -90,    lonmax = -50,    latmin = 10.5,    latmax = 35.5,
+# )
+
+# Lo_region = Region(
+#     region_name="all_region",
+#     lonmin = -63.1,    lonmax = -23.1,    latmin = 8.850000000000001,    latmax = 33.85,
+# )
+
+# strong_region = [Ka_region, Ma_region, Ir_region, Do_region, Lo_region]
+
+
+
+
+# Cr_region = Region(
+#     region_name="all_region",
+#     lonmin = -88,    lonmax = -48,    latmin = 19.6,    latmax = 44.6,
+# )
+
+# Ge_region = Region(
+#     region_name="all_region",
+#     lonmin = -84.75,    lonmax = -44.75,    latmin = 23.6,    latmax = 48.6,
+# )
+
+# Ik_region = Region(
+#     region_name="all_region",
+#     lonmin = -109.3,    lonmax = -69.3,    latmin = 13.350000000000001,    latmax = 38.35,
+# )
+
+# Jo_region = Region(
+#     region_name="all_region",
+#     lonmin = -81.05,    lonmax = -41.05,    latmin = 22.5,    latmax = 47.5,
+# )
+
+# Ni_region = Region(
+#     region_name="all_region",
+#     lonmin = -73.6,    lonmax = -33.6,    latmin = 24.549999999999997,    latmax = 49.55,
+# )
+    
+# weak_region = [Cr_region, Ge_region, Ik_region, Jo_region, Ni_region]  
+
+
+
+ 
+    
 
 def Calculate_Distance_Haversine1(x):
     return (np.sin(x[0]/2))**2
@@ -181,7 +260,13 @@ def Calculate_Distance_Haversine3(x):
 
 
 
+def plot_polygon(ax, region, edgecolor, linestyle):
 
+    geom = geometry.box(minx=region.lonmin,maxx=region.lonmax,miny=region.latmin,maxy=region.latmax)
+    ax.add_geometries([geom], crs=cartopy.crs.PlateCarree(), \
+                      alpha=1,linewidth=2, linestyle=linestyle,\
+                      facecolor='none', edgecolor=edgecolor)
+    return ax
 
 
 
@@ -356,6 +441,10 @@ for kk in range(1):
     # ax.set_ylim(cartopy_ylim(slp2D))
     ax.set_extent(lat_log_bound[0])
     ax.background_img(name='SR', resolution='high')
+    
+
+
+ 
 
     # Show grid lines.
     gl = ax.gridlines(crs=crs.PlateCarree(), draw_labels=True,
@@ -374,13 +463,20 @@ for kk in range(1):
     rr=[]
     for i in range(real_kk.shape[0]):
         for j in range(real_kk.shape[1]):
-            if j<cons:
+            if j<6:
                 ll.append(real_kk[i][j][0])
                 rr.append(real_kk[i][j][1])
         ax.plot( rr, ll, color = colors[c], marker=markers[0],linewidth=2, \
                 linestyle=list(linestyles.values())[0],\
                   markersize=sizes[0], transform=crs.PlateCarree())
-        c+=1
+    for k in range(0, len(ll),3):
+        ax.text( rr[k]+0.5, ll[k]+0.5, strong_month_day[c][k], color = colors[c], \
+                 transform=crs.Geodetic(), fontsize='xx-large', **csfont)
+    #plot_polygon(ax, strong_region[c], colors[c], list(linestyles.values())[0])
+    c+=1
+
+        
+
 
     real_kk = []
     real_kk = real[1]
@@ -394,7 +490,10 @@ for kk in range(1):
         ax.plot( rr, ll, color = colors[c], marker=markers[0],linewidth=2, \
                 linestyle=list(linestyles.values())[0],\
                   markersize=sizes[0], transform=crs.PlateCarree())
-        c+=1
+    for k in range(0, len(ll),3):
+        ax.text( rr[k]+0.5, ll[k]+0.5, strong_month_day[c][k], color = colors[c], \
+                 transform=crs.Geodetic(), fontsize='xx-large', **csfont)
+    c+=1
         
     real_kk = []
     real_kk = real[2]
@@ -408,7 +507,11 @@ for kk in range(1):
         ax.plot( rr, ll, color = colors[c], marker=markers[0],linewidth=2, \
                 linestyle=list(linestyles.values())[0],\
                   markersize=sizes[0], transform=crs.PlateCarree())
-        c+=1   
+    #plot_polygon(ax, strong_region[c], colors[c], list(linestyles.values())[0])
+    for k in range(0, len(ll),3):
+        ax.text( rr[k], ll[k]+1, strong_month_day[c][k], color = colors[c], \
+                 transform=crs.Geodetic(), fontsize='xx-large', **csfont)
+    c+=1   
         
         
     real_kk = []
@@ -417,13 +520,18 @@ for kk in range(1):
     rr=[]
     for i in range(real_kk.shape[0]):
         for j in range(real_kk.shape[1]):
-            if j<cons:
+            if j<7:
                 ll.append(real_kk[i][j][0])
                 rr.append(real_kk[i][j][1])
         ax.plot( rr, ll, color = colors[c], marker=markers[0],linewidth=2, \
                 linestyle=list(linestyles.values())[0],\
                   markersize=sizes[0], transform=crs.PlateCarree())
-        c+=1
+    #plot_polygon(ax, strong_region[c], colors[c], list(linestyles.values())[0])
+    for k in range(0, len(ll),4):
+        print(c)
+        ax.text( rr[k], ll[k]+1.5, strong_month_day[c][k], color = colors[c], \
+                 transform=crs.Geodetic(), fontsize='xx-large', **csfont)
+    c+=1
         
         
     real_kk = []
@@ -438,7 +546,11 @@ for kk in range(1):
         ax.plot( rr, ll, color = colors[c], marker=markers[0],linewidth=2, \
                 linestyle=list(linestyles.values())[0],\
                   markersize=sizes[0], transform=crs.PlateCarree())
-        c+=1
+    #plot_polygon(ax, strong_region[c], colors[c], list(linestyles.values())[0])
+    for k in range(0, len(ll),3):
+        ax.text( rr[k]+0.5, ll[k]+1, strong_month_day[c][k], color = colors[c], \
+                 transform=crs.Geodetic(), fontsize='xx-large', **csfont)
+    c+=1
         
         
 
@@ -511,7 +623,11 @@ for kk in range(1):
         ax.plot( rr, ll, color = colors[c], marker=markers[0],linewidth=2, \
                 linestyle=list(linestyles.values())[3],\
                   markersize=sizes[0], transform=crs.PlateCarree())
-        c+=1
+    #plot_polygon(ax, weak_region[c], colors[c], list(linestyles.values())[3])
+    for k in range(0, len(ll),3):
+        ax.text( rr[k]-4, ll[k], strong_month_day[c][k], color = colors[c], \
+                 transform=crs.Geodetic(), fontsize='xx-large', **csfont)
+    c+=1
 
     real_kk = []
     real_kk = real2[1]
@@ -525,7 +641,11 @@ for kk in range(1):
         ax.plot( rr, ll, color = colors[c], marker=markers[0],linewidth=2, \
                 linestyle=list(linestyles.values())[3],\
                   markersize=sizes[0], transform=crs.PlateCarree())
-        c+=1
+    #plot_polygon(ax, weak_region[c], colors[c], list(linestyles.values())[3])
+    for k in range(0, len(ll),3):
+        ax.text( rr[k]+1.5, ll[k], strong_month_day[c][k], color = colors[c], \
+                 transform=crs.Geodetic(), fontsize='xx-large', **csfont)
+    c+=1
         
     real_kk = []
     real_kk = real2[2]
@@ -539,7 +659,11 @@ for kk in range(1):
         ax.plot( rr, ll, color = colors[c], marker=markers[0],linewidth=2, \
                 linestyle=list(linestyles.values())[3],\
                   markersize=sizes[0], transform=crs.PlateCarree())
-        c+=1   
+    #plot_polygon(ax, weak_region[c], colors[c], list(linestyles.values())[3])
+    for k in range(0, len(ll),3):
+        ax.text( rr[k]+0.5, ll[k]+0.5, strong_month_day[c][k], color = colors[c], \
+                 transform=crs.Geodetic(), fontsize='xx-large', **csfont)
+    c+=1   
         
         
     real_kk = []
@@ -554,7 +678,11 @@ for kk in range(1):
         ax.plot( rr, ll, color = colors[c], marker=markers[0],linewidth=2, \
                 linestyle=list(linestyles.values())[3],\
                   markersize=sizes[0], transform=crs.PlateCarree())
-        c+=1
+    #plot_polygon(ax, weak_region[c], colors[c], list(linestyles.values())[3])
+    for k in range(0, len(ll),3):
+        ax.text( rr[k]+1, ll[k]+0.5, strong_month_day[c][k], color = colors[c], \
+                 transform=crs.Geodetic(), fontsize='xx-large', **csfont)
+    c+=1
         
         
     real_kk = []
@@ -569,7 +697,11 @@ for kk in range(1):
         ax.plot( rr, ll, color = colors[c], marker=markers[0],linewidth=2, \
                 linestyle=list(linestyles.values())[3],\
                   markersize=sizes[0], transform=crs.PlateCarree())
-        c+=1        
+    #plot_polygon(ax, weak_region[c], colors[c], list(linestyles.values())[3])
+    for k in range(0, len(ll),3):
+        ax.text( rr[k]+1, ll[k]-1, strong_month_day[c][k], color = colors[c], \
+                 transform=crs.Geodetic(), fontsize='xx-large', **csfont)
+    c+=1        
         
         
         
